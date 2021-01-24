@@ -213,6 +213,9 @@
         <li>
           <button class="dropdown-item"><i class="far fa-question-circle"></i> Chaters FAQ</button>
         </li>
+         <li>
+          <button @click="Logout()" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </li>
       </ul>
     </div>
   </div>
@@ -456,7 +459,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getUsers', 'userByLogin', 'updateUserLogin', 'updateImages']),
+    ...mapActions(['getUsers', 'userByLogin', 'updateUserLogin', 'updateImages', 'Logout']),
     friendsChat () {
       axios.get('http://localhost:5000/api/friends/my-friends')
         .then((result) => {

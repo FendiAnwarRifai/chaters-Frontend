@@ -102,6 +102,12 @@ export default new Vuex.Store({
           })
       })
     },
+    Logout (context, payload) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('id')
+      context.commit('REMOVE_TOKEN')
+      router.push('/')
+    },
     getUsers (context, payload) {
       return new Promise((resolve, reject) => {
         axios.get('http://localhost:5000/api/chat/')
