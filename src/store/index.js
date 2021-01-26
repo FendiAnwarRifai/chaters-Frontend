@@ -75,7 +75,7 @@ export default new Vuex.Store({
 
     login (context, payload) {
       return new Promise((resolve, reject) => {
-        axios.post('http://localhost:5000/api/auth/login', payload)
+        axios.post(`${process.env.VUE_APP_BASE_URL}/api/auth/login`, payload)
           .then(res => {
             const result = res.data.result
             localStorage.setItem('token', result.token)
@@ -92,7 +92,7 @@ export default new Vuex.Store({
     },
     register (context, payload) {
       return new Promise((resolve, reject) => {
-        axios.post('http://localhost:5000/api/auth/register', payload)
+        axios.post(`${process.env.VUE_APP_BASE_URL}/api/auth/register`, payload)
           .then(res => {
             const result = res.data
             resolve(result)
@@ -110,7 +110,7 @@ export default new Vuex.Store({
     },
     getUsers (context, payload) {
       return new Promise((resolve, reject) => {
-        axios.get('http://localhost:5000/api/chat/')
+        axios.get(`${process.env.VUE_APP_BASE_URL}/api/chat/`)
           .then((result) => {
             context.commit('SET_USER_ALL', result.data.result)
             resolve(result.data.result)
@@ -122,7 +122,7 @@ export default new Vuex.Store({
     },
     userByLogin (context, payload) {
       return new Promise((resolve, reject) => {
-        axios.get(`http://localhost:5000/api/chat/personal/${context.state.idUser}`)
+        axios.get(`${process.env.VUE_APP_BASE_URL}/api/chat/personal/${context.state.idUser}`)
           .then(res => {
             context.commit('SET_USER_BYLOGIN', res.data.result[0])
             resolve(res.data.result[0])
@@ -134,7 +134,7 @@ export default new Vuex.Store({
     },
     updateUserLogin (context, payload) {
       return new Promise((resolve, reject) => {
-        axios.patch(`http://localhost:5000/api/chat/edit-personal/${context.state.idUser}`, payload)
+        axios.patch(`${process.env.VUE_APP_BASE_URL}/api/chat/edit-personal/${context.state.idUser}`, payload)
           .then((result) => {
             resolve(result)
           })
@@ -145,7 +145,7 @@ export default new Vuex.Store({
     },
     updateImages (context, payload) {
       return new Promise((resolve, reject) => {
-        axios.patch(`http://localhost:5000/api/chat/edit-personal/${context.state.idUser}`, payload, { headers: { 'Content-Type': 'multipart/form-data' } })
+        axios.patch(`${process.env.VUE_APP_BASE_URL}/api/chat/edit-personal/${context.state.idUser}`, payload, { headers: { 'Content-Type': 'multipart/form-data' } })
           .then(res => {
             Vue.swal.fire({
               title: 'Success!',

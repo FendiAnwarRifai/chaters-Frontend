@@ -378,7 +378,7 @@ export default {
       nothing: '',
       chat: 'd-none',
       idLogin: localStorage.getItem('id'),
-      socket: io('http://localhost:5000'),
+      socket: io(`${process.env.VUE_APP_BASE_URL}`),
       friendsChats: [],
       friendsInfo: {},
       id_receiver: '',
@@ -396,7 +396,7 @@ export default {
       this.cek = data.cekStatus
     })
     this.socket.on('userDisconnect', () => {
-      axios.get(`http://localhost:5000/api/chat/personal/${this.id_receiver}`)
+      axios.get(`${process.env.VUE_APP_BASE_URL}/api/chat/personal/${this.id_receiver}`)
         .then((res) => {
           this.friendsInfo = res.data.result[0]
         })
@@ -425,7 +425,7 @@ export default {
     })
     this.socket.on('kirimKembali', (data) => {
       setTimeout(() => {
-        axios.get(`http://localhost:5000/api/chat/history?idOne=${this.idLogin}&idTwo=${this.id_receiver}`).then((result) => {
+        axios.get(`${process.env.VUE_APP_BASE_URL}/api/chat/history?idOne=${this.idLogin}&idTwo=${this.id_receiver}`).then((result) => {
           this.messages = result.data.result
         })
       }, 200)
@@ -461,7 +461,7 @@ export default {
   methods: {
     ...mapActions(['getUsers', 'userByLogin', 'updateUserLogin', 'updateImages', 'Logout']),
     friendsChat () {
-      axios.get('http://localhost:5000/api/friends/my-friends')
+      axios.get(`${process.env.VUE_APP_BASE_URL}/api/friends/my-friends`)
         .then((result) => {
           console.log(result.data.result)
           this.friendsChats = result.data.result
@@ -474,12 +474,12 @@ export default {
       this.id_receiver = val.id || val.idFriend
       this.socket.emit('initialUser', { idpengirim: this.idLogin, idpenerima: this.id_receiver })
       // get message
-      axios.get(`http://localhost:5000/api/chat/history?idOne=${this.idLogin}&idTwo=${this.id_receiver}`).then((result) => {
+      axios.get(`${process.env.VUE_APP_BASE_URL}/api/chat/history?idOne=${this.idLogin}&idTwo=${this.id_receiver}`).then((result) => {
         console.log('ini message dari database', result.data.result)
         this.messages = result.data.result
       })
       // get user by id
-      axios.get(`http://localhost:5000/api/chat/personal/${this.id_receiver}`)
+      axios.get(`${process.env.VUE_APP_BASE_URL}/api/chat/personal/${this.id_receiver}`)
         .then((res) => {
           this.friendsInfo = res.data.result[0]
         })
