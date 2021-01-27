@@ -214,7 +214,7 @@
           <button class="dropdown-item"><i class="far fa-question-circle"></i> Chaters FAQ</button>
         </li>
          <li>
-          <button @click="Logout()" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</button>
+          <button @click="handleLogout()" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </li>
       </ul>
     </div>
@@ -466,6 +466,11 @@ export default {
           console.log(result.data.result)
           this.friendsChats = result.data.result
         })
+    },
+    handleLogout () {
+      this.Logout().then((res) => {
+        this.socket.emit('clientLogout', this.idLogin)
+      })
     },
     messageById (val) {
       console.log('cek data', val)
