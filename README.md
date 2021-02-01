@@ -32,7 +32,7 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Screenshots](#screenshots)
-* [Related Project](#related-project-backend)
+* [Related Project](#related-project)
 * [Contact](#contact)
 
 
