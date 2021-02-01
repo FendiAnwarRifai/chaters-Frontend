@@ -10,7 +10,6 @@
 
 # Chaters Frontend
   <p>
-    <br />
     <a href="https://chaters.netlify.app">View Demo</a>
   </p>
 
