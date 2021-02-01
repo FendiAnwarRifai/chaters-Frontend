@@ -9,14 +9,10 @@
 <br />
 
 # Chaters Frontend
-
-<p align="center">
-
-  <p align="center">
+  <p>
     <br />
     <a href="https://chaters.netlify.app">View Demo</a>
   </p>
-</p>
 
 
 
