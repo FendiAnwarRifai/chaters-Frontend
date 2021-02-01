@@ -11,7 +11,6 @@
   </p>
 
   <p align="center">
-    <br />
     <a href="https://github.com/FendiAnwarRifai/chaters-Frontend"><strong>Explore the docs »</strong></a>
     <br />
     <br />
