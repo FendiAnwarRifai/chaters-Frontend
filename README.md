@@ -7,7 +7,7 @@
 <p align="center">
   <h3 align="center">Chaters App</h1>
   <p align="center">
-    <img align="center" width="100"  src='./screenshots/logo.PNG' />
+    <img align="center" width="200"  src='./screenshots/logo.PNG' />
   </p>
 
   <p align="center">
