@@ -815,11 +815,11 @@ export default {
   .list-message{
     max-width: 80% !important;
   }
-  .chat-receiver, .chat-sender {
+  .status, .chat-receiver, .chat-sender {
     font-size: 12px;
   }
   .textDateReceiver, .textDateSender {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 </style>
