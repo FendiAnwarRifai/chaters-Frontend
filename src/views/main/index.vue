@@ -105,7 +105,7 @@
       <div class="header row p-3" style="color: #7E98DF;">
         <div class="col login-name d-flex align-items-center justify-content-center" style="position:relative;">
           <i style="cursor:pointer; position:absolute; left: 100px; top: 6px;" @click="closeNav" class="fas fa-chevron-left fa-lg"></i>
-          <h5>@{{dataPersonal.username}}</h5>
+          <h5>@{{friendsInfo.username}}</h5>
         </div>
       </div>
       <div class="row mt-2">
@@ -129,7 +129,7 @@
     <div class="row p-2 ps-3">
       <div>
         <h6 style="font-size: 18px">Phone number</h6>
-        <h6 style="font-size: 16px; font-weight: 400;">{{friendsInfo.phone}}</h6>
+        <h6 style="font-size: 16px; font-weight: 400;">{{friendsInfo.phone || '-'}}</h6>
       </div>
     </div>
     <hr>
@@ -147,9 +147,9 @@
       </ul>
       <div class="tab-content" id="pills-tabContent" style="overflow-y: scroll; overflow-x: hidden; height:36vh;">
         <div class="tab-pane fade show active" id="pills-location" role="tabpanel" aria-labelledby="pills-location-tab">
-          <l-map :zoom="zoom" :center="center" style="height: 200px; width: 100%">
+          <l-map :zoom="zoom" :center="friendCenter" style="height: 200px; width: 100%">
             <l-tile-layer :url="url" :attribution="attribution" />
-            <l-marker :lat-lng="markerLatLng"></l-marker>
+            <l-marker :lat-lng="friendMarkerLatLng"></l-marker>
           </l-map>
         </div>
         <div class="tab-pane fade" id="pills-images" role="tabpanel" aria-labelledby="pills-images-tab">
@@ -284,7 +284,7 @@
     <div class="row" style="padding: 20px;">
       <div class=" col-1 d-flex align-items-start chat-images">
         <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:70px; height:70px; overflow:hidden; cursor:pointer;">
-          <img :src="friendsInfo.images" alt="" height="70px">
+          <img :src="friendsInfo.images" alt="" height="60px">
         </label>
       </div>
       <div class="col d-flex align-items-center">
@@ -317,13 +317,13 @@
               {{message.messages}}
             </div>
           </div>
-          <div class="col d-flex align-items-center">
+          <div class="col d-flex align-items-center textDateReceiver">
             {{ $dayjs(message.date).calendar(null, { sameDay: '[Hari ini] HH:mm', lastDay: '[Kemarin ] HH:mm', lastWeek: ' ddd DD HH:mm', sameElse: 'DD/MM/YYYY' }) }}
           </div>
         </div>
         <!-- ini untuk pengirim -->
         <div v-else class="row mb-3">
-          <div class="col d-flex align-items-center justify-content-end">
+          <div class="col d-flex align-items-center justify-content-end textDateSender">
             {{ $dayjs(message.date).calendar(null, { sameDay: '[Hari ini] HH:mm', lastDay: '[Kemarin ] HH:mm', lastWeek: ' ddd DD HH:mm', sameElse: 'DD/MM/YYYY' }) }}
           </div>
           <div class="list-message col-auto d-flex justify-content-end align-items-end" style="max-width: 35%;">
@@ -388,7 +388,9 @@ export default {
       center: latLng(0, 0),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      markerLatLng: [0, 0]
+      markerLatLng: [0, 0],
+      friendCenter: latLng(0, 0),
+      friendMarkerLatLng: [0, 0]
     }
   },
   mounted: function () {
@@ -487,6 +489,8 @@ export default {
       axios.get(`${process.env.VUE_APP_BASE_URL}/api/chat/personal/${this.id_receiver}`)
         .then((res) => {
           this.friendsInfo = res.data.result[0]
+          this.friendCenter = latLng(res.data.result[0].lat, res.data.result[0].lng)
+          this.friendMarkerLatLng = [res.data.result[0].lat, res.data.result[0].lng]
         })
     },
     sendMessage () {
@@ -794,10 +798,28 @@ export default {
     margin-right: 20%;
   }
 }
+  .textDateSender{
+    text-align: right;
+  }
 @media only screen and (max-width: 530px) {
   .list-user-chat{
     margin-left: 14% !important;
     margin-right: 14%;
+  }
+}
+
+@media only screen and (max-width: 458px) {
+  .chat-images{
+    display: none !important;
+  }
+  .list-message{
+    max-width: 80% !important;
+  }
+  .chat-receiver, .chat-sender {
+    font-size: 12px;
+  }
+  .textDateReceiver, .textDateSender {
+    font-size: 12px;
   }
 }
 </style>
