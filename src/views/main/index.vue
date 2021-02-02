@@ -228,20 +228,8 @@
       <i class="fas fa-plus fs-3"></i>
     </div>
   </div>
-  <div class="row list-user-chat" style="margin-left:0px">
-    <ul class="nav nav-pills mb-3 d-flex justify-content-around" id="pills-tab" role="tablist" >
-      <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">All</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="pills-important-tab" data-bs-toggle="pill" href="#pills-important" role="tab" aria-controls="pills-important" aria-selected="false">Important</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="pills-unread-tab" data-bs-toggle="pill" href="#pills-unread" role="tab" aria-controls="pills-unread" aria-selected="false">Unread</a>
-      </li>
-    </ul>
-    <div class="tab-content" id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab"  style="overflow-y: scroll; overflow-x: hidden; height:63vh;">
+  <div class="list-user-chat" style="margin-left:0px">
+      <div style="overflow-y: scroll; overflow-x: hidden; height:63vh;">
         <div @click="messageById(data)" v-for="data in friendsChats" :key="data.id" class="content-contact row d-flex align-items-center mb-3">
           <div class="col-3" style="position:relative;">
             <div style="position:relative; width:60px; height:60px;">
@@ -271,9 +259,6 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="pills-important" role="tabpanel" aria-labelledby="pills-important-tab"></div>
-      <div class="tab-pane fade" id="pills-unread" role="tabpanel" aria-labelledby="pills-unread-tab"></div>
-    </div>
   </div>
 </div>
 <div class="right col-lg-9">
@@ -809,6 +794,9 @@ export default {
 }
 
 @media only screen and (max-width: 458px) {
+  .list-user-chat{
+    margin: 0 !important;
+  }
   .chat-images{
     display: none !important;
   }
