@@ -42,12 +42,9 @@
     <div ref="profile" class="login-personal ps-2">
       <div class="sub-profile">
         <div class="header row p-3 d-flex align-items-center" style="color: #7E98DF;">
-          <div class="col-4">
-            <i style="cursor:pointer;" @click="backChatting" class="fas fa-chevron-left fa-lg"></i>
+          <div class="col-4" @click="backChatting" style="cursor:pointer;">
+            <i class="fas fa-chevron-left fa-lg"></i> Close
           </div>
-          <div class="col login-name ps-4">
-           <h5>@{{dataPersonal.username}}</h5>
-         </div>
        </div>
        <div class="row mt-2">
          <div class="col d-flex justify-content-center align-items-center">
@@ -63,7 +60,7 @@
            <span style="font-size: 16px; color: #adadad;">@{{dataPersonal.username}}</span>
          </div>
        </div>
-       <div style="overflow-y: scroll; overflow-x: hidden; height:68vh;">
+       <div style="overflow-y: scroll; overflow-x: hidden; height: max-content; max-height: 68vh;">
         <div class="row p-3 mt-3">
           <div>
             <h6 style="font-size: 18px">Account</h6>
@@ -85,7 +82,7 @@
             <span data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor:pointer; font-size: 14px; color: #adadad; font-weight: 300;">Bio</span>
           </div>
         </div>
-        <div class="row p-3">
+        <div class="row p-4 pb-5">
           <div>
             <h6 style="font-size: 18px">My Location</h6>
             <l-map :zoom="zoom" :center="center" style="height: 200px; width: 100%">
@@ -203,9 +200,6 @@
       <ul class="dropdown-menu animate slideIn" aria-labelledby="drop-menu">
         <li>
           <button @click="settingProfile()" class="dropdown-item"><i class="fas fa-cog"></i> Setting</button>
-        </li>
-        <li>
-          <button @click="contact()" class="dropdown-item"><i class="far fa-user"></i> Contacts</button>
         </li>
         <li>
           <button @click="searchFriends()" class="dropdown-item"><i class="fas fa-user-plus"></i> Invite Friends</button>
@@ -853,6 +847,9 @@ export default {
   }
   .textDateReceiver, .textDateSender {
     font-size: 10px;
+  }
+  .dropdown-menu{
+    left: -55px !important;
   }
 }
 </style>

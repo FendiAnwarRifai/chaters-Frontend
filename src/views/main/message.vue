@@ -11,8 +11,8 @@
         </div>
         <div class="row mt-2">
         <div class="col d-flex justify-content-center align-items-center">
-            <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:80px; height:80px; overflow:hidden; cursor:pointer;">
-            <img :src="friendsInfo.images" alt="" height="80px">
+            <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:60px; height:60px; overflow:hidden; cursor:pointer;">
+            <img :src="friendsInfo.images" alt="" height="60px">
             </label>
         </div>
         </div>
@@ -33,7 +33,7 @@
         </div>
         </div>
         <hr>
-        <div class="row p-3">
+        <div class="row p-3 pb-5">
         <ul class="nav nav-pills mb-3 d-flex justify-content-around" id="pills-tab" role="tablist" >
             <li class="nav-item" role="presentation">
             <a class="nav-link active" id="pills-location-tab" data-bs-toggle="pill" href="#pills-location" role="tab" aria-controls="pills-location" aria-selected="true">Location</a>
@@ -268,7 +268,7 @@ export default {
       transition: 0.3s;
     }
     .sub-friends-detail{
-      width: 336px;
+      width: 358px;
     }
 
     .login-name{
