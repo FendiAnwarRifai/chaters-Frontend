@@ -85,7 +85,7 @@
       </div>
     </div>
     <div class="row chaters">
-      <div class="messages-content" ref="messageBody" style="height:75vh;">
+      <div class="messages-content" ref="messageBody" style="height:70vh;">
         <div v-for="(message, index ) in messages" :key="index">
           <!-- ini untuk penerima -->
           <div class="row mb-3" v-if="message.status === 'dikirim' || message.receiverId == idLogin">
@@ -371,7 +371,7 @@ export default {
 
 @media only screen and (max-width: 458px) {
   .chaters{
-        padding-top:82px;
+        padding-top:90px;
     }
   .chat-images{
     display: none !important;
