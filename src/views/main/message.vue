@@ -85,7 +85,7 @@
       </div>
     </div>
     <div class="row chaters">
-      <div ref="messageBody" class="messages-content">
+      <div class="messages-content" ref="messageBody" style="height:75vh;">
         <div v-for="(message, index ) in messages" :key="index">
           <!-- ini untuk penerima -->
           <div class="row mb-3" v-if="message.status === 'dikirim' || message.receiverId == idLogin">
@@ -160,6 +160,11 @@ export default {
     }
   },
   mounted: function () {
+    var container = this.$refs.messageBody
+    container.scroll({
+      top: container.scrollHeight,
+      behavior: 'smooth'
+    })
     this.messageById()
     this.userByLogin()
     this.socket.on('userStatus', (data) => {
