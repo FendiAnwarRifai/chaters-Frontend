@@ -20,7 +20,22 @@
           </div>
         </div>
         <div class="" style="overflow-y: scroll; overflow-x: hidden; height:77vh;">
-          <div @click="messageById(data)" v-for="data in dataAll" :key="data.id" class="content-contact row d-flex align-items-center ms-1 mb-3 shadow p-2 bg-white rounded-pill " style="width:98%">
+          <div @click="messageById(data)" v-for="data in dataAll" :key="data.id" class="content-contact row d-flex align-items-center ms-1 mb-3 shadow p-2 bg-white rounded-pill desktop" style="width:98%">
+            <div class="col-3" style="position:relative;">
+              <div style="position:relative; width:50px; height:50px;">
+                <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; overflow:hidden; cursor:pointer;">
+                  <img :src="data.images" alt="" height="50px">
+                </label>
+                <i v-if="cek.includes(data.id) === true" style="position:absolute; bottom: 0; right: 0; color:#2fed25;" class="fas fa-circle"></i>
+              </div>
+            </div>
+            <div class="col">
+              <div class=" text-dark name">
+                {{data.name}}
+              </div>
+            </div>
+          </div>
+          <div @click="messagesNew(data)" v-for="data in dataAll" :key="data.id" class="content-contact row d-flex align-items-center ms-1 mb-3 shadow p-2 bg-white rounded-pill mobile" style="width:98%">
             <div class="col-3" style="position:relative;">
               <div style="position:relative; width:50px; height:50px;">
                 <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; overflow:hidden; cursor:pointer;">
@@ -570,6 +585,9 @@ export default {
     },
     messagesPush (val) {
       this.$router.push({ path: `/message/${val.idFriend}` })
+    },
+    messagesNew (val) {
+      this.$router.push({ path: `/message/${val.id}` })
     }
   }
 }
