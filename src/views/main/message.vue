@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background:#EDEDED; height:100vh;">
     <!-- this friends detail -->
     <div ref="friendsDetail" class="info-friends">
       <div class="sub-friends-detail">
@@ -11,7 +11,7 @@
         </div>
         <div class="row mt-2">
           <div class="col d-flex justify-content-center align-items-center">
-            <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:60px; height:60px; overflow:hidden; cursor:pointer;">
+            <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:60px; height:60px; overflow:hidden;">
               <img :src="friendsInfo.images" alt="" height="60px">
             </label>
           </div>

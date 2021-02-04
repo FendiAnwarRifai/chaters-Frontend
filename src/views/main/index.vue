@@ -107,10 +107,9 @@
       </div>
       <div class="row mt-2">
        <div class="col d-flex justify-content-center align-items-center">
-         <label class="d-flex justify-content-center align-items-center" for="uploadImage" style="border-radius:100%; width:80px; height:80px; overflow:hidden; cursor:pointer;">
+         <label class="d-flex justify-content-center align-items-center" for="uploadImage" style="border-radius:100%; width:80px; height:80px; overflow:hidden;">
            <img :src="editData.avatar || friendsInfo.images" alt="" height="80px">
          </label>
-         <input class="d-none" id="uploadImage" type="file" @change="getImage"/>
        </div>
      </div>
      <div class="row p-3 mt-3">
@@ -290,7 +289,7 @@
   <div :class="chat">
     <div class="row" style="padding: 20px;">
       <div class=" col-1 d-flex align-items-start chat-images">
-        <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:70px; height:70px; overflow:hidden; cursor:pointer;">
+        <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:70px; height:70px; overflow:hidden;">
           <img :src="friendsInfo.images" alt="" height="60px">
         </label>
       </div>
@@ -315,7 +314,7 @@
         <!-- ini untuk penerima -->
         <div class="row mb-3" v-if="message.status === 'dikirim' || message.receiverId == idLogin">
           <div class="chat-images col-1 d-flex align-items-end">
-            <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:50px; height:50px; overflow:hidden; cursor:pointer;">
+            <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:50px; height:50px; overflow:hidden;">
               <img :src="friendsInfo.images" alt="" height="50px">
             </label>
           </div>
@@ -339,7 +338,7 @@
             </div>
           </div>
           <div class="chat-images col-1 d-flex align-items-end">
-            <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:50px; height:50px; overflow:hidden; cursor:pointer;">
+            <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:50px; height:50px; overflow:hidden;">
               <img :src="dataPersonal.images" alt="" height="50px">
             </label>
           </div>
