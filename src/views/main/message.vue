@@ -85,7 +85,7 @@
       </div>
     </div>
     <div class="row chaters">
-      <div class="messages-content" ref="messageBody" style="height:66.5vh; ">
+      <div class="messages-content">
         <div v-for="(message, index ) in messages" :key="index">
           <!-- ini untuk penerima -->
           <div class="row mb-3" v-if="message.status === 'dikirim' || message.receiverId == idLogin">
@@ -134,14 +134,14 @@ import io from 'socket.io-client'
 import axios from 'axios'
 import { mapGetters, mapActions } from 'vuex'
 import { latLng } from 'leaflet'
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet'
+// import { LMap, LTileLayer, LMarker } from 'vue2-leaflet'
 export default {
   name: 'Index',
-  components: {
-    LMap,
-    LTileLayer,
-    LMarker
-  },
+  // components: {
+  //   LMap,
+  //   LTileLayer,
+  //   LMarker
+  // },
   data () {
     return {
       cek: [],
@@ -160,11 +160,6 @@ export default {
     }
   },
   mounted: function () {
-    var container = this.$refs.messageBody
-    container.scroll({
-      top: container.scrollHeight,
-      behavior: 'smooth'
-    })
     this.messageById()
     this.userByLogin()
     this.socket.on('userStatus', (data) => {
@@ -201,11 +196,7 @@ export default {
   watch: {
     messages: function (val) {
       setTimeout(() => {
-        var container = this.$refs.messageBody
-        container.scroll({
-          top: container.scrollHeight,
-          behavior: 'smooth'
-        })
+        window.scrollTo(0, document.body.scrollHeight)
       }, 50)
     }
   },
@@ -248,7 +239,8 @@ export default {
         background:#EDEDED;
         padding-right: 0 !important;
         padding-top:110px;
-        margin:0 0 80px 0;
+        padding-bottom: 80px;
+        margin:0;
     }
     .mobile{
       display: none !important;
