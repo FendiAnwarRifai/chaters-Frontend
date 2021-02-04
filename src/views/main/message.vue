@@ -134,14 +134,14 @@ import io from 'socket.io-client'
 import axios from 'axios'
 import { mapGetters, mapActions } from 'vuex'
 import { latLng } from 'leaflet'
-// import { LMap, LTileLayer, LMarker } from 'vue2-leaflet'
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet'
 export default {
   name: 'Index',
-  // components: {
-  //   LMap,
-  //   LTileLayer,
-  //   LMarker
-  // },
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker
+  },
   data () {
     return {
       cek: [],
@@ -347,9 +347,6 @@ export default {
   }
 }
 @media only screen and (max-width: 960px) {
-    /* .chaters{
-        padding: 10px;
-    } */
   .chat-images {
     width:15%;
   }
