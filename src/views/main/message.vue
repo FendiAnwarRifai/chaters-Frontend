@@ -87,7 +87,7 @@
             </div>
         </div>
         <div class="row" style="background:#EDEDED; padding-right: 0 !important;">
-            <div ref="messageBody" style="width:100%; height: 66.5vh; overflow-y: scroll; overflow-x: hidden; position: relative; padding: 18px; padding-right: 0;">
+            <div ref="messageBody" class="messages-content">
             <div v-for="(message, index ) in messages" :key="index">
                 <!-- ini untuk penerima -->
                 <div class="row mb-3" v-if="message.status === 'dikirim' || message.receiverId == idLogin">
@@ -301,6 +301,14 @@ export default {
   font-size: 14px;
   color: #7E98DF;
 }
+.messages-content{
+    width:100%;
+    height: 66.5vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    padding: 18px 0px 18px 8px;
+}
 
 .status{
   font-size: 14px;
@@ -372,6 +380,9 @@ export default {
   }
   .list-message{
     max-width: 80% !important;
+  }
+  .messages-content{
+      padding: 18px 8px 18px 8px;
   }
   .status, .chat-receiver, .chat-sender {
     font-size: 12px;
