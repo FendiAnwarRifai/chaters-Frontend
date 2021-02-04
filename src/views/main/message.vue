@@ -63,7 +63,7 @@
     </div>
     </div>
     <!-- end  friends detail -->
-    <div class="row" style="margin:0;">
+    <div class="row" style="margin:0; height:max-content;">
         <div class="col">
             <div class="row chaters">
             <div class=" col-1 d-flex align-items-start chat-images">
@@ -85,49 +85,49 @@
             <div class="col d-flex justify-content-end align-items-center">
             <i @click="openNav" class="fas fa-th-large fa-lg" style=" color: #7E98DF; cursor:pointer;"></i>
             </div>
-        </div>
-        <div class="row" style="background:#EDEDED; padding-right: 0 !important;">
-            <div ref="messageBody" class="messages-content">
-            <div v-for="(message, index ) in messages" :key="index">
-                <!-- ini untuk penerima -->
-                <div class="row mb-3" v-if="message.status === 'dikirim' || message.receiverId == idLogin">
-                <div class="chat-images col-1 d-flex align-items-end">
-                    <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:50px; height:50px; overflow:hidden; cursor:pointer;">
-                    <img :src="friendsInfo.images" alt="" height="50px">
-                    </label>
-                </div>
-                <div class="list-message col-auto d-flex justify-content-end align-items-end" style="max-width: 35%;">
-                    <div class="chat-receiver">
-                    {{message.messages}}
-                    </div>
-                </div>
-                <div class="col d-flex align-items-center textDateReceiver">
-                    {{ $dayjs(message.date).calendar(null, { sameDay: '[Hari ini] HH:mm', lastDay: '[Kemarin ] HH:mm', lastWeek: ' ddd DD HH:mm', sameElse: 'DD/MM/YYYY' }) }}
-                </div>
-                </div>
-                <!-- ini untuk pengirim -->
-                <div v-else class="row mb-3">
-                <div class="col d-flex align-items-center justify-content-end textDateSender">
-                    {{ $dayjs(message.date).calendar(null, { sameDay: '[Hari ini] HH:mm', lastDay: '[Kemarin ] HH:mm', lastWeek: ' ddd DD HH:mm', sameElse: 'DD/MM/YYYY' }) }}
-                </div>
-                <div class="list-message col-auto d-flex justify-content-end align-items-end" style="max-width: 35%;">
-                    <div class="chat-sender">
-                    {{message.messages}}
-                    </div>
-                </div>
-                <div class="chat-images col-1 d-flex align-items-end" style="text-align:right;">
-                    <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:50px; height:50px; overflow:hidden; cursor:pointer;">
-                    <img :src="dataPersonal.images" alt="" height="50px">
-                    </label>
-                </div>
-                </div>
             </div>
+            <div class="row" style="background:#EDEDED; padding-right: 0 !important;">
+                <div ref="messageBody" class="messages-content">
+                <div v-for="(message, index ) in messages" :key="index">
+                    <!-- ini untuk penerima -->
+                    <div class="row mb-3" v-if="message.status === 'dikirim' || message.receiverId == idLogin">
+                    <div class="chat-images col-1 d-flex align-items-end">
+                        <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:50px; height:50px; overflow:hidden; cursor:pointer;">
+                        <img :src="friendsInfo.images" alt="" height="50px">
+                        </label>
+                    </div>
+                    <div class="list-message col-auto d-flex justify-content-end align-items-end" style="max-width: 35%;">
+                        <div class="chat-receiver">
+                        {{message.messages}}
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-center textDateReceiver">
+                        {{ $dayjs(message.date).calendar(null, { sameDay: '[Hari ini] HH:mm', lastDay: '[Kemarin ] HH:mm', lastWeek: ' ddd DD HH:mm', sameElse: 'DD/MM/YYYY' }) }}
+                    </div>
+                    </div>
+                    <!-- ini untuk pengirim -->
+                    <div v-else class="row mb-3">
+                    <div class="col d-flex align-items-center justify-content-end textDateSender">
+                        {{ $dayjs(message.date).calendar(null, { sameDay: '[Hari ini] HH:mm', lastDay: '[Kemarin ] HH:mm', lastWeek: ' ddd DD HH:mm', sameElse: 'DD/MM/YYYY' }) }}
+                    </div>
+                    <div class="list-message col-auto d-flex justify-content-end align-items-end" style="max-width: 35%;">
+                        <div class="chat-sender">
+                        {{message.messages}}
+                        </div>
+                    </div>
+                    <div class="chat-images col-1 d-flex align-items-end" style="text-align:right;">
+                        <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; width:50px; height:50px; overflow:hidden; cursor:pointer;">
+                        <img :src="dataPersonal.images" alt="" height="50px">
+                        </label>
+                    </div>
+                    </div>
+                </div>
 
+                </div>
             </div>
-        </div>
 
         <div class="row">
-        <div class="col position-relative" style="padding: 20px;">
+        <div class="col" style="padding: 20px; position:fixed; bottom:0; background:white;">
             <input style="padding-right:150px" v-model="inputMessage" @keypress.enter="sendMessage" class="input-message" type="text" placeholder="Type your message...">
             <!-- <div class="fa-lg position-absolute fitur-input-message">
             <i class="fas fa-plus"></i>
@@ -303,7 +303,7 @@ export default {
 }
 .messages-content{
     width:100%;
-    height: 66.5vh;
+    height: 74.5vh;
     overflow-y: scroll;
     overflow-x: hidden;
     position: relative;
