@@ -85,7 +85,7 @@
       </div>
     </div>
     <div class="row chaters">
-      <div class="messages-content" ref="messageBody" style="height:70vh;">
+      <div class="messages-content" ref="messageBody" style="height:66.5vh; ">
         <div v-for="(message, index ) in messages" :key="index">
           <!-- ini untuk penerima -->
           <div class="row mb-3" v-if="message.status === 'dikirim' || message.receiverId == idLogin">
