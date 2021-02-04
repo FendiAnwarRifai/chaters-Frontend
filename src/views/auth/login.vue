@@ -1,12 +1,12 @@
 <template>
   <div class="margin">
-    <form style="border-radius:28px;" class="shadow-lg p-5 mb-5 bg-white" @submit.prevent="LoginData">
+    <form autocomplete="off" style="border-radius:28px;" class="shadow-lg p-5 mb-5 bg-white" @submit.prevent="LoginData">
       <h3 class="text-center text-login">Login</h3>
 
       <div class="mb-3 mt-4">
         <span style="font-size:14px;">Hi, Welcome back!</span><br>
         <label for="input-email" class="form-label label-email">Email</label>
-        <Input v-model="email" id="input-email" type="text" placeholder="Input your email" @keyup="checkEmail" />
+        <Input v-model="email" id="input-email" type="email" placeholder="Input your email" @keyup="checkEmail" />
         <span style="color:red; font-size:14px;">{{emailError}}</span>
       </div>
 
@@ -51,15 +51,21 @@ export default {
   methods: {
     ...mapActions(['login']),
     checkEmail (e) {
+      console.log(e.target.value)
       const inputName = e.target.value
+      console.log(inputName.length)
       if (inputName.length === 0) {
         this.emailError = 'email can not be empty'
+      } else {
+        this.emailError = ''
       }
     },
     checkPassword (e) {
       const inputPass = e.target.value
       if (inputPass.length === 0) {
         this.passwordError = 'password can not be empty'
+      } else {
+        this.passwordError = ''
       }
     },
     LoginData () {

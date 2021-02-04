@@ -1,6 +1,6 @@
 <template>
   <div class="margin">
-    <form style="border-radius:28px;" class="shadow-lg p-5 mb-5 bg-white" @submit.prevent="registerData">
+    <form autocomplete="off" style="border-radius:28px;" class="shadow-lg p-5 mb-5 bg-white" @submit.prevent="registerData">
      <router-link to="/"><i class="goBack fas fa-chevron-left fa-lg"></i></router-link> <h3 class="text-center text-register">Register</h3>
 
       <div class="mb-3 mt-4">
@@ -13,7 +13,7 @@
 
       <div class="mb-3">
           <label for="input-email" class="form-label label">Email</label>
-          <Input v-model="email" id="input-email" type="text" placeholder="Input your email"/>
+          <Input v-model="email" id="input-email" type="email" placeholder="Input your email"/>
           <span style="color:red; font-size:14px;">{{emailError}}</span>
       </div>
 
