@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Login from '../views/auth/login.vue'
 import Register from '../views/auth/register.vue'
 import Index from '../views/main/index.vue'
+import message from '../views/main/message.vue'
 
 import maps from '../views/maps.vue'
 
@@ -26,6 +27,12 @@ const routes = [
     path: '/main',
     name: 'Index',
     component: Index,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/message/:id',
+    name: 'message',
+    component: message,
     meta: { requiresAuth: true }
   },
   {

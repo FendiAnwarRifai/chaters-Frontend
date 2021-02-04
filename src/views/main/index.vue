@@ -230,7 +230,35 @@
   </div>
   <div class="list-user-chat" style="margin-left:0px">
       <div style="overflow-y: scroll; overflow-x: hidden; height:63vh;">
-        <div @click="messageById(data)" v-for="data in friendsChats" :key="data.id" class="content-contact row d-flex align-items-center mb-3">
+        <div @click="messageById(data)" v-for="data in friendsChats" :key="data.id" class="content-contact row d-flex align-items-center mb-3 desktop">
+          <div class="col-3" style="position:relative;">
+            <div style="position:relative; width:60px; height:60px;">
+              <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; overflow:hidden; cursor:pointer;">
+                <img :src="data.user.images" alt="" height="60px">
+              </label>
+              <i v-if="cek.includes(data.idFriend) === true" style="position:absolute; bottom: 0; right: 0; color:#2fed25;" class="fas fa-circle"></i>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class=" text-dark name">
+              {{data.user.name}}
+            </div>
+            <div class=" message">
+              {{data.message}}
+            </div>
+          </div>
+          <div class="col-3 text-center ">
+            <div class="row">
+              <div class="col-12 text-secondary">
+                <!-- 23:00 -->
+              </div>
+              <div class="col-12">
+                <!-- <span class="notif">999+</span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div @click="messagesPush(data)" v-for="data in friendsChats" :key="data.id" class="content-contact row d-flex align-items-center mb-3 mobile">
           <div class="col-3" style="position:relative;">
             <div style="position:relative; width:60px; height:60px;">
               <label class="d-flex justify-content-center align-items-center" style="border-radius:100%; overflow:hidden; cursor:pointer;">
@@ -328,13 +356,13 @@
   </div>
 
   <div class="row">
-   <div class="col position-relative" style="padding: 30px;">
+   <div class="col position-relative" style="padding: 20px;">
      <input style="padding-right:150px" v-model="inputMessage" @keypress.enter="sendMessage" class="input-message" type="text" placeholder="Type your message...">
-     <div class="fa-lg position-absolute fitur-input-message">
+     <!-- <div class="fa-lg position-absolute fitur-input-message">
        <i class="fas fa-plus"></i>
        <i class="fas fa-surprise ms-3"></i>
        <i class="fas fa-camera ms-3"></i>
-     </div>
+     </div> -->
    </div>
  </div>
 </div>
@@ -546,6 +574,9 @@ export default {
     },
     back () {
       this.$refs.searchFriends.style = 'width:0; border-right: 0px;'
+    },
+    messagesPush (val) {
+      this.$router.push({ path: `/message/${val.idFriend}` })
     }
   }
 }
@@ -555,6 +586,9 @@ export default {
 /* * {
     border:1px solid blue !important;
     } */
+    .mobile{
+      display: none !important;
+    }
     .login-personal{
       background: white;
       width: 0;
@@ -766,6 +800,17 @@ export default {
   right: 52px;
   top: 42px;
   color: #7E98DF;
+}
+@media only screen and (max-width: 991px) {
+      .mobile{
+      display: flex !important;
+    }
+    .desktop{
+      display: none !important;
+    }
+  .right{
+    display: none;
+  }
 }
 @media only screen and (max-width: 960px) {
   .chat-images {
