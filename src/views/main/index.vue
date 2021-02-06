@@ -486,7 +486,6 @@ export default {
     friendsChat () {
       axios.get(`${process.env.VUE_APP_BASE_URL}/api/friends/my-friends`)
         .then((result) => {
-          console.log(result.data.result)
           this.friendsChats = result.data.result
         })
     },
@@ -496,14 +495,13 @@ export default {
       })
     },
     messageById (val) {
-      console.log('cek data', val)
+      this.back()
       this.nothing = 'd-none'
       this.chat = ''
       this.id_receiver = val.id || val.idFriend
       this.socket.emit('initialUser', { idpengirim: this.idLogin, idpenerima: this.id_receiver })
       // get message
       axios.get(`${process.env.VUE_APP_BASE_URL}/api/chat/history?idOne=${this.idLogin}&idTwo=${this.id_receiver}`).then((result) => {
-        console.log('ini message dari database', result.data.result)
         this.messages = result.data.result
       })
       // get user by id

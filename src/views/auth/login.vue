@@ -51,9 +51,7 @@ export default {
   methods: {
     ...mapActions(['login']),
     checkEmail (e) {
-      console.log(e.target.value)
       const inputName = e.target.value
-      console.log(inputName.length)
       if (inputName.length === 0) {
         this.emailError = 'email can not be empty'
       } else {

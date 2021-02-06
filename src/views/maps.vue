@@ -55,7 +55,6 @@ export default {
   },
   mounted () {
     this.$getLocation().then(coordinates => {
-      console.log(coordinates)
       this.center = latLng(coordinates.lat, coordinates.lng)
       this.markerLatLng = [coordinates.lat, coordinates.lng]
     })
